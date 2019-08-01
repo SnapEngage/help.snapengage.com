@@ -73,49 +73,7 @@ exports.processJSON = (req, res) => {
   }
 };
 
-/*
-* respondToSnapEngage: send a JSON response to the webhook
-*
-* @param req HTTP request context.
-* @param res HTTP response context.
-* @param text text to send back to the visitor
-* @param command (optional) command to send back to SnapEngage
-* @param commandParams (optional) command parameters when applicable (i.e. widget ID to
-transfer to, URL for the GOTO command)
-* @param buttons (option) array of buttons, i.e. [{"text": "Yes"}, {"text": "No"}]
-*/
-function respondToSnapEngage(req, res, text, command, commandParams, buttons) {
-  var request = req.body;
-  var response = {};
-  response.widget_id = request.widget_id;
-  response.case_id = request.case_id;
-  var content = [];
 
-  if (buttons) {
-    content.push({
-      "type": "message",
-      "text": text,
-      "display_responses": buttons
-    });
-  } else {
-    content.push({
-      "type": "message",
-      "text": text
-    });
-  }
-  if (command) {
-    content.push({
-      "type": "command",
-      "operation": command,
-      "parameters": commandParams
-    });
-  }
-  response.content = content;
-
-  console.log(response);
-
-  res.status(200).send(JSON.stringify(response));
-}
 
 /*
 * respondToSnapEngage: send a JSON response to the webhook
