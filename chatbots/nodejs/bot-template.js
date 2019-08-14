@@ -38,7 +38,7 @@ exports.processJSON = (req, res) => {
     } else if (message.indexOf('conference') !== -1
                || message.indexOf('event') !== -1
                || message.indexOf('fair') !== -1
-               || message.indexOf('work trip') !== -1
+               || message.indexOf('work') !== -1
                || message.indexOf('retreat') !== -1) {
       respondToSnapEngage(req, res, 'Unfortunately we do not organise work events, or conferences, and we are not able to assist.', 'BYE');
     } else if (message.indexOf('spain') !== -1) {
